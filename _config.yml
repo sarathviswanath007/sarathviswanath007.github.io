@@ -1,0 +1,44 @@
+title: Sarath Viswanath
+tagline: Engineering quality that earns trust and scales with it.
+description: >-
+  Sarath Viswanath — Quality Engineering specialist. Building quality into the
+  system itself: catching risk early, designing strategies that fit the way
+  teams ship, and figuring out where AI makes the work genuinely better.
+author: Sarath Viswanath
+email: "sarathviswanath93@gmail.com"
+location: Bengaluru, India
+url: "https://sarathviswanath007.github.io"
+
+# Social / contact — fill these in
+linkedin: "linkedin.com/in/sarath-viswanath-
+6bba61258"
+github: "sarathviswanath007"
+twitter: ""
+
+# Build settings
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
