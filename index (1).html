@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarath Viswanath — Quality Engineering, Reimagined for the AI Era</title>
+<meta name="description" content="Sarath Viswanath — Quality Engineering leader turning quality from a release bottleneck into a delivery accelerator, and defining how QE evolves for AI-native software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#100F0C;
+    --bg-1:#17150F;
+    --bg-2:#1D1B15;
+    --border:#2B271F;
+    --border-strong:#3A352A;
+    --text-primary:#F5F1E6;
+    --text-secondary:#A9A395;
+    --text-muted:#77715F;
+    --accent:#D9713C;
+    --accent-light:#EFA678;
+    --accent-dim:#4A2F1E;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);
+    color:var(--text-primary);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  /* signature signal-wave divider */
+  .signal{width:100%;height:48px;overflow:hidden;opacity:0.55;}
+  .signal svg{width:100%;height:100%;}
+
+  section{position:relative;padding:96px 0;}
+  @media (max-width:640px){section{padding:64px 0;}}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent-light);
+    margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:16px;height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-0.01em;color:var(--text-primary);}
+  h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:20px;font-variation-settings:'opsz' 40;}
+  p{color:var(--text-secondary);}
+  .lead{font-size:17px;line-height:1.75;max-width:640px;}
+
+  /* nav */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(16,15,12,0.82);
+    border-bottom:0.5px solid var(--border);
+  }
+  header .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:18px;padding-bottom:18px;
+  }
+  .logo{font-family:var(--serif);font-size:18px;font-weight:500;color:var(--text-primary);}
+  nav.links{display:flex;gap:28px;font-size:14px;color:var(--text-secondary);}
+  nav.links a:hover{color:var(--text-primary);}
+  @media (max-width:720px){nav.links{display:none;}}
+
+  /* hero */
+  .hero{padding-top:88px;padding-bottom:64px;}
+  .hero h1{
+    font-size:clamp(34px,6vw,58px);
+    line-height:1.08;
+    max-width:760px;
+    margin-bottom:24px;
+    font-variation-settings:'opsz' 60;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--accent-light);
+  }
+  .hero .lead{margin-bottom:36px;font-size:18px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px;}
+  .btn{
+    font-family:var(--sans);
+    font-size:14px;font-weight:500;
+    padding:13px 24px;
+    border-radius:6px;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primary{background:var(--accent);color:#211106;}
+  .btn-primary:hover{background:var(--accent-light);transform:translateY(-1px);}
+  .btn-ghost{border:0.5px solid var(--border-strong);color:var(--text-primary);}
+  .btn-ghost:hover{border-color:var(--accent);background:var(--bg-1);}
+
+  /* impact strip */
+  .stat-strip{
+    display:flex;align-items:flex-end;gap:48px;flex-wrap:wrap;
+    border-top:0.5px solid var(--border);
+    padding-top:36px;
+  }
+  .stat-hero .num{
+    font-family:var(--serif);font-size:56px;font-weight:500;color:var(--accent-light);line-height:1;
+    font-variation-settings:'opsz' 60;
+  }
+  .stat-hero .label{font-size:13px;color:var(--text-muted);margin-top:10px;}
+  .stat-group{display:flex;gap:36px;flex-wrap:wrap;padding-bottom:4px;}
+  .stat-group .num{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--text-primary);}
+  .stat-group .label{font-size:12px;color:var(--text-muted);margin-top:6px;max-width:130px;}
+
+  /* how I solve */
+  .solve-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  @media (max-width:720px){.solve-grid{grid-template-columns:1fr;gap:32px;}}
+  .solve-grid .lead{font-size:19px;color:var(--text-primary);line-height:1.7;font-family:var(--serif);font-variation-settings:'opsz' 20;}
+  .solve-grid .support p{margin-bottom:16px;font-size:15px;}
+  .solve-grid .support p:last-child{
+    color:var(--accent-light);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:17px;
+    margin-top:24px;
+  }
+
+  /* vision */
+  .vision{background:var(--bg-1);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);}
+  .vision-quote{
+    font-family:var(--serif);
+    font-size:clamp(20px,2.6vw,28px);
+    line-height:1.45;
+    color:var(--text-primary);
+    max-width:760px;
+    margin-bottom:28px;
+    font-variation-settings:'opsz' 30;
+  }
+  .vision-quote strong{color:var(--accent-light);font-weight:500;}
+  .vision p.support{font-size:15px;max-width:640px;margin-bottom:14px;}
+
+  /* case studies */
+  .case{
+    border:0.5px solid var(--border);
+    border-radius:12px;
+    padding:36px;
+    margin-bottom:24px;
+    background:var(--bg-1);
+  }
+  .case:last-child{margin-bottom:0;}
+  .case-tag{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--text-muted);margin-bottom:14px;
+  }
+  .case h3{font-size:22px;margin-bottom:18px;}
+  .cai-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:20px;}
+  @media (max-width:820px){.cai-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:480px){.cai-grid{grid-template-columns:1fr;}}
+  .cai-block .k{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;
+    color:var(--accent-light);margin-bottom:8px;display:block;
+  }
+  .cai-block p{font-size:14px;color:var(--text-secondary);line-height:1.6;}
+  .case-impact{
+    margin-top:24px;padding-top:20px;border-top:0.5px solid var(--border);
+    font-size:15px;color:var(--text-primary);
+  }
+  .case-impact strong{color:var(--accent-light);font-weight:500;}
+
+  /* domain range */
+  .domain-row{
+    display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;
+  }
+  .domain-pill{
+    border:0.5px solid var(--border-strong);
+    border-radius:999px;
+    padding:9px 18px;
+    font-size:14px;
+    color:var(--text-primary);
+    font-family:var(--sans);
+  }
+  .domain-note{margin-top:20px;font-size:14px;color:var(--text-muted);}
+
+  /* leadership */
+  .phil{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  @media (max-width:720px){.phil{grid-template-columns:1fr;}}
+  .phil-item{border-left:1.5px solid var(--accent);padding-left:22px;}
+  .phil-item h3{font-size:19px;margin-bottom:12px;font-family:var(--serif);}
+  .phil-item p{font-size:15px;}
+
+  /* insights */
+  .insight-card{
+    border:0.5px dashed var(--border-strong);
+    border-radius:12px;
+    padding:32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .insight-card h3{font-size:18px;margin-bottom:10px;}
+  .insight-card p{font-size:14px;max-width:480px;}
+  .insight-badge{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;
+    color:var(--accent-light);border:0.5px solid var(--accent-dim);
+    padding:6px 12px;border-radius:6px;white-space:nowrap;
+  }
+
+  /* blog */
+  .blog-list{display:flex;flex-direction:column;gap:16px;}
+  a.insight-card{
+    border-style:solid;
+    transition:border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  }
+  a.insight-card:hover{border-color:var(--accent);background:var(--bg-1);transform:translateY(-1px);}
+  .insight-card .meta{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;
+    color:var(--text-muted);margin-bottom:10px;
+  }
+  .insight-badge.live{color:#211106;background:var(--accent-light);border-color:var(--accent-light);}
+  .insight-card .read-more{
+    font-family:var(--mono);font-size:12px;color:var(--accent-light);
+    display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+  }
+
+  /* contact */
+  .contact h2{margin-bottom:14px;}
+  .contact .lead{margin-bottom:36px;}
+  .contact-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .contact-link{
+    display:flex;align-items:center;gap:12px;
+    border:0.5px solid var(--border-strong);
+    border-radius:8px;
+    padding:16px 22px;
+    font-size:15px;
+    transition:border-color 0.15s ease, background 0.15s ease;
+    min-width:240px;
+  }
+  .contact-link:hover{border-color:var(--accent);background:var(--bg-1);}
+  .contact-link .cl-label{font-size:11px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:4px;}
+  .contact-link .cl-value{color:var(--text-primary);font-weight:500;}
+
+  footer{
+    border-top:0.5px solid var(--border);
+    padding:32px 0;
+    font-size:13px;
+    color:var(--text-muted);
+    text-align:center;
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  :focus-visible{outline:1.5px solid var(--accent);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="logo">Sarath Viswanath</span>
+    <nav class="links">
+      <a href="#vision">Vision</a>
+      <a href="#case-studies">Case studies</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Quality Engineering &middot; AI era</p>
+    <h1>Quality Engineering, <em>reimagined</em> for the AI era.</h1>
+    <p class="lead">12+ years turning quality from a release bottleneck into a delivery accelerator — reducing risk, cutting cycle time, and now defining how QE evolves for AI-native software.</p>
+    <div class="cta-row">
+      <a href="#case-studies" class="btn btn-primary">View case studies</a>
+      <a href="https://www.linkedin.com/in/sarath-viswanath-6bba61258" class="btn btn-ghost" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+
+    <div class="stat-strip reveal">
+      <div class="stat-hero">
+        <div class="num">19x</div>
+        <div class="label">Faster regression &mdash; 8 hrs &rarr; 25 min</div>
+      </div>
+      <div class="stat-group">
+        <div>
+          <div class="num">6</div>
+          <div class="label">Microservices governed today</div>
+        </div>
+        <div>
+          <div class="num">10+</div>
+          <div class="label">Engineers mentored across roles</div>
+        </div>
+        <div>
+          <div class="num">1&ndash;2</div>
+          <div class="label">Production defects / quarter</div>
+        </div>
+        <div>
+          <div class="num">12+</div>
+          <div class="label">Years, 4 industries</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="signal"><svg viewBox="0 0 960 48" preserveAspectRatio="none"><path d="M0 24 L120 24 L140 6 L160 42 L180 24 L300 24 L320 12 L340 36 L360 24 L520 24 L540 4 L560 44 L580 24 L720 24 L740 14 L760 34 L780 24 L960 24" fill="none" stroke="#D9713C" stroke-width="1.2"/></svg></div>
+
+<!-- HOW I SOLVE -->
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow">How I work</p>
+    <div class="solve-grid reveal">
+      <p class="lead">Quality isn't a phase at the end of a sprint — it's a discipline that either accelerates delivery or blocks it. I've spent 12+ years making sure it's the former.</p>
+      <div class="support">
+        <p>My approach: catch risk before it reaches production, automate the repetitive so engineers focus on the hard problems, and treat AI not as a shortcut but as a force multiplier — for how teams test, and increasingly, for what teams are testing.</p>
+        <p>I've led that shift across agritech, insurance, automotive, and e-commerce platforms, each with its own definition of "quality that matters."</p>
+        <p>The next chapter of this work isn't optimizing how AI helps us test. It's defining how we test AI itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI + QE VISION -->
+<section class="vision" id="vision">
+  <div class="wrap reveal">
+    <p class="eyebrow">AI + Quality Engineering</p>
+    <p class="vision-quote">For decades, a test had one job: compare actual output to an expected output. Pass or fail. <strong>Generative AI breaks that model</strong> — the "correct" answer isn't fixed, it's a distribution.</p>
+    <p class="support">A recommendation engine, a chatbot, a GenAI-powered feature can be technically functional and still wrong: hallucinated, inconsistent across runs, subtly biased, or unsafe.</p>
+    <p class="support">Quality Engineering hasn't caught up to this. Most teams are still applying deterministic thinking — pass/fail asserts — to systems that are fundamentally probabilistic. I'm actively building my expertise in this space: what does an evaluation framework look like when correctness is a spectrum? How do you regression-test a prompt? How do you validate relevance, consistency, and safety at scale?</p>
+    <p class="support" style="color:var(--text-primary);font-family:var(--serif);font-style:italic;font-size:16px;margin-top:20px;">This is where I'm placing my next 12 years.</p>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="wrap">
+    <p class="eyebrow">Case studies</p>
+    <h2>Two problems, solved end to end.</h2>
+
+    <div class="reveal">
+      <div class="case">
+        <div class="case-tag">Regression automation</div>
+        <h3>From an 8-hour bottleneck to a 25-minute pipeline</h3>
+        <div class="cai-grid">
+          <div class="cai-block"><span class="k">Challenge</span><p>A cloud-native, microservices platform relied on manual regression before every release. A full cycle took a working day — QA became the bottleneck between "feature done" and "feature shipped."</p></div>
+          <div class="cai-block"><span class="k">Action</span><p>Led the design and rollout of an automated regression suite across UI, API, and integration layers, replacing manual execution with repeatable, CI-integrated coverage.</p></div>
+          <div class="cai-block"><span class="k">Innovation</span><p>Restructured the suite around risk-based prioritization, so high-impact paths ran first and fast feedback reached engineers before low-risk edge cases did.</p></div>
+          <div class="cai-block"><span class="k">Impact</span><p>Regression time dropped 19x. Release model shifted from feature-blocked to continuous — ship on Definition of Done, not on a fixed calendar.</p></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">AI adoption in Quality Engineering</div>
+        <h3>Turning ad hoc AI use into a team-wide capability</h3>
+        <div class="cai-grid">
+          <div class="cai-block"><span class="k">Challenge</span><p>AI tooling was available, but adoption was inconsistent — engineers used it ad hoc, with no shared method, leading to inefficient prompting and inconsistent output quality.</p></div>
+          <div class="cai-block"><span class="k">Action</span><p>Built and rolled out reusable prompting standards for the QE team — a shared practice, not an individual habit — for AI-assisted test design, analysis, and debugging.</p></div>
+          <div class="cai-block"><span class="k">Innovation</span><p>Treated prompt engineering as a team capability to be systematized. Standardized patterns meant the team operated within existing token allocation more efficiently.</p></div>
+          <div class="cai-block"><span class="k">Impact</span><p>20&ndash;30% team-wide adoption of AI-assisted workflows, more consistent output quality, and less repetitive manual test-design work.</p></div>
+        </div>
+        <div class="case-impact">This is also the operational foundation — <strong>team-wide AI fluency at scale</strong> — for the next frontier: validating AI systems themselves, not just using AI to test faster.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="signal"><svg viewBox="0 0 960 48" preserveAspectRatio="none"><path d="M0 24 L120 24 L140 6 L160 42 L180 24 L300 24 L320 12 L340 36 L360 24 L520 24 L540 4 L560 44 L580 24 L720 24 L740 14 L760 34 L780 24 L960 24" fill="none" stroke="#D9713C" stroke-width="1.2"/></svg></div>
+
+<!-- DOMAIN RANGE -->
+<section id="domain">
+  <div class="wrap reveal">
+    <p class="eyebrow">Domain range</p>
+    <h2>Quality assurance across regulated, high-complexity domains.</h2>
+    <div class="domain-row">
+      <span class="domain-pill">Agritech</span>
+      <span class="domain-pill">Insurance</span>
+      <span class="domain-pill">Automotive</span>
+      <span class="domain-pill">E-commerce</span>
+    </div>
+    <p class="domain-note">12+ years across agritech, insurance, automotive, and e-commerce — each domain with its own regulatory bar, its own definition of an acceptable defect.</p>
+  </div>
+</section>
+
+<!-- LEADERSHIP PHILOSOPHY -->
+<section id="philosophy">
+  <div class="wrap">
+    <p class="eyebrow">Leadership philosophy</p>
+    <h2>Two principles I operate by.</h2>
+    <div class="phil reveal">
+      <div class="phil-item">
+        <h3>Lead from behind. Stand in front when it breaks.</h3>
+        <p>I give my team the space to own decisions and take the credit when things go right. When something breaks, I'm the one who steps forward — not to assign blame, but to absorb it. Ownership isn't a title you hold when things are easy; it's what you do when they're not.</p>
+      </div>
+      <div class="phil-item">
+        <h3>Failure is the cost of innovation — I make it safe to pay.</h3>
+        <p>I don't optimize for a team that never fails. I optimize for a team that tries. If people are only ever hitting safe, predictable outcomes, they've stopped experimenting — and a QE function that's stopped experimenting can't keep up with how fast quality itself is changing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="wrap reveal">
+    <p class="eyebrow">Blog</p>
+    <h2>Writing on quality, AI, and where the two collide.</h2>
+    <div class="blog-list">
+      <a class="insight-card" href="blog/ai-quality-assurance-for-the-ai-era.html">
+        <div>
+          <div class="meta">July 2026 &middot; 9 min read</div>
+          <h3>AI Quality Assurance: Why Software Testers Need a New Playbook for the AI Era</h3>
+          <p>Traditional testing checks a fixed answer. AI systems don't have one. Here's how QA has to change — new failure modes, new test design, and the security responsibilities testers now own.</p>
+          <span class="read-more">Read the article &rarr;</span>
+        </div>
+        <span class="insight-badge live">New</span>
+      </a>
+      <div class="insight-card">
+        <div>
+          <h3>Testing intelligence: how QE must evolve for the GenAI era</h3>
+          <p>A working thesis on evaluation frameworks for non-deterministic systems — relevance scoring, hallucination checks, consistency-across-runs, and guardrail validation.</p>
+        </div>
+        <span class="insight-badge">In progress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <p class="eyebrow">Get in touch</p>
+    <h2>Let's talk quality, AI, or what's next.</h2>
+    <p class="lead">Whether you're hiring, building, speaking, or just thinking about where Quality Engineering goes next — I'm interested in the conversation.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:sarathviswanath93@gmail.com">
+        <span>
+          <span class="cl-label">Email</span>
+          <span class="cl-value">sarathviswanath93@gmail.com</span>
+        </span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/sarath-viswanath-6bba61258" target="_blank" rel="noopener">
+        <span>
+          <span class="cl-label">LinkedIn</span>
+          <span class="cl-value">/in/sarath-viswanath</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Sarath Viswanath. Built with intent, not a template.
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.12});
+  els.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
