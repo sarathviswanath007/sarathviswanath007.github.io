@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Quality Assurance: Why Software Testers Need a New Playbook for the AI Era — Sarath Viswanath</title>
-<meta name="description" content="Traditional testing checks a fixed answer. AI systems don't have one. How QA has to change — new failure modes, new test design, and the security responsibilities testers now own.">
+<title>AI Quality Assurance: A New Playbook for the AI Era | Sarath Viswanath</title>
+<meta name="description" content="Traditional testing checks a fixed answer. AI systems don't have one. Why QA needs a new playbook: new failure modes, new test design, and the security responsibilities testers now own.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg-0:#100F0C;
-    --bg-1:#17150F;
-    --bg-2:#1D1B15;
-    --border:#2B271F;
-    --border-strong:#3A352A;
-    --text-primary:#F5F1E6;
-    --text-secondary:#A9A395;
-    --text-muted:#77715F;
-    --accent:#D9713C;
-    --accent-light:#EFA678;
-    --accent-dim:#4A2F1E;
-    --serif: 'Fraunces', Georgia, serif;
+    --bg-0:#0B0E12;
+    --bg-1:#111620;
+    --bg-2:#161C28;
+    --border:#1F2836;
+    --border-strong:#2C3A4D;
+    --text-primary:#EAF0F6;
+    --text-secondary:#98A6B8;
+    --text-muted:#5E6E82;
+    --accent:#3DD6C4;
+    --accent-light:#7DE9DC;
+    --accent-dim:#123B37;
+    --serif: 'Space Grotesk', -apple-system, sans-serif;
     --sans: 'Inter', -apple-system, sans-serif;
     --mono: 'IBM Plex Mono', monospace;
   }
@@ -31,44 +31,17 @@
     background:var(--bg-0);
     color:var(--text-primary);
     font-family:var(--sans);
-    line-height:1.6;
+    line-height:1.7;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none;}
-  img,svg{display:block;max-width:100%;}
-  .wrap{max-width:760px;margin:0 auto;padding:0 32px;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 32px;}
   @media (max-width:640px){.wrap{padding:0 20px;}}
-
-  .signal{width:100%;height:48px;overflow:hidden;opacity:0.55;}
-  .signal svg{width:100%;height:100%;}
-
-  section{position:relative;padding:64px 0;}
-  @media (max-width:640px){section{padding:44px 0;}}
-
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--accent-light);
-    margin-bottom:18px;
-    display:flex;align-items:center;gap:10px;
-  }
-  .eyebrow::before{
-    content:'';
-    width:16px;height:1px;
-    background:var(--accent);
-    display:inline-block;
-  }
-
-  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-0.01em;color:var(--text-primary);}
-  p{color:var(--text-secondary);}
 
   header{
     position:sticky;top:0;z-index:50;
     backdrop-filter:blur(10px);
-    background:rgba(16,15,12,0.82);
+    background:rgba(11,14,18,0.82);
     border-bottom:0.5px solid var(--border);
   }
   header .wrap{
@@ -76,89 +49,93 @@
     display:flex;align-items:center;justify-content:space-between;
     padding-top:18px;padding-bottom:18px;
   }
-  .logo{font-family:var(--serif);font-size:18px;font-weight:500;color:var(--text-primary);}
-  .back-link{font-size:14px;color:var(--text-secondary);display:flex;align-items:center;gap:8px;}
-  .back-link:hover{color:var(--text-primary);}
+  .logo{font-family:var(--serif);font-size:18px;font-weight:500;}
+  .back{
+    font-family:var(--mono);font-size:13px;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color 0.15s ease;
+  }
+  .back:hover{color:var(--accent-light);}
 
-  /* article header */
-  .article-head{padding-top:72px;padding-bottom:24px;}
-  .article-head h1{
-    font-size:clamp(30px,5vw,46px);
-    line-height:1.14;
-    margin-bottom:22px;
-    font-variation-settings:'opsz' 60;
+  article{padding:72px 0 96px;}
+  @media (max-width:640px){article{padding:48px 0 64px;}}
+
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--accent-light);margin-bottom:20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:16px;height:1px;background:var(--accent);display:inline-block;}
+
+  h1{
+    font-family:var(--serif);font-weight:600;letter-spacing:-0.015em;
+    font-size:clamp(30px,4.6vw,44px);line-height:1.12;margin-bottom:22px;
   }
   .article-meta{
-    font-family:var(--mono);font-size:12px;letter-spacing:0.04em;
-    color:var(--text-muted);text-transform:uppercase;
-    display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;
+    font-family:var(--mono);font-size:13px;color:var(--text-muted);
+    display:flex;gap:16px;flex-wrap:wrap;
+    padding-bottom:32px;margin-bottom:40px;
+    border-bottom:0.5px solid var(--border);
   }
-  .article-lead{font-size:18px;line-height:1.75;color:var(--text-primary);max-width:680px;}
+  .article-meta .author{color:var(--text-secondary);}
 
-  /* article body */
-  .article-body h2{
-    font-size:clamp(22px,3vw,28px);
-    margin-top:48px;margin-bottom:16px;
-    font-variation-settings:'opsz' 40;
+  article h2{
+    font-family:var(--serif);font-weight:600;letter-spacing:-0.01em;
+    font-size:clamp(22px,3vw,28px);line-height:1.2;
+    margin:52px 0 18px;
   }
-  .article-body h3{
-    font-size:19px;margin-top:32px;margin-bottom:12px;
-    color:var(--accent-light);font-weight:500;
+  article h3{
+    font-family:var(--serif);font-weight:500;font-size:19px;
+    margin:36px 0 14px;color:var(--text-primary);
   }
-  .article-body p{font-size:16px;line-height:1.8;margin-bottom:18px;max-width:680px;}
-  .article-body ul{margin:0 0 20px 0;padding-left:0;list-style:none;max-width:680px;}
-  .article-body li{
-    font-size:16px;line-height:1.75;color:var(--text-secondary);
-    padding-left:22px;position:relative;margin-bottom:10px;
+  article p{color:var(--text-secondary);font-size:17px;margin-bottom:22px;}
+  article p.lead{
+    font-size:20px;color:var(--text-primary);line-height:1.6;
+    font-family:var(--serif);font-weight:400;margin-bottom:28px;
   }
-  .article-body li::before{
-    content:'';position:absolute;left:0;top:11px;width:8px;height:1px;background:var(--accent);
+  article strong{color:var(--text-primary);font-weight:600;}
+  article em{color:var(--accent-light);font-style:italic;}
+  article ul{margin:0 0 22px 0;padding-left:0;list-style:none;}
+  article ul li{
+    color:var(--text-secondary);font-size:17px;margin-bottom:14px;padding-left:26px;position:relative;
   }
-  .article-body strong{color:var(--text-primary);font-weight:600;}
-  .pull-quote{
-    font-family:var(--serif);
-    font-size:clamp(19px,2.4vw,24px);
-    line-height:1.5;
-    color:var(--text-primary);
-    max-width:640px;
-    margin:36px 0;
-    padding-left:24px;
-    border-left:1.5px solid var(--accent);
-    font-variation-settings:'opsz' 30;
+  article ul li::before{
+    content:'';position:absolute;left:0;top:12px;
+    width:8px;height:8px;border:1px solid var(--accent);border-radius:2px;
   }
-  .pull-quote strong{color:var(--accent-light);font-weight:500;}
+  blockquote{
+    border-left:2px solid var(--accent);
+    padding:6px 0 6px 24px;margin:32px 0;
+    font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--text-primary);
+  }
 
-  .divider{border-top:0.5px solid var(--border);margin:48px 0;}
+  /* editorial note — visible only to you while drafting. Delete the .draft-note
+     blocks (and this comment) before publishing, OR leave them: they're clearly
+     marked and dimmed. */
+  .draft-note{
+    border:0.5px dashed var(--border-strong);
+    border-radius:8px;background:var(--bg-1);
+    padding:16px 20px;margin:20px 0 32px;
+    font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--text-muted);
+  }
+  .draft-note b{color:var(--accent-light);font-weight:500;}
 
-  /* course callout */
-  .callout{
-    border:0.5px solid var(--border);
-    border-radius:12px;
-    padding:32px;
-    background:var(--bg-1);
-    margin-top:8px;
+  .article-foot{
+    margin-top:64px;padding-top:32px;border-top:0.5px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
   }
-  .callout h3{font-size:19px;margin-bottom:10px;color:var(--text-primary);}
-  .callout p{font-size:15px;margin-bottom:20px;}
-  .btn{
-    font-family:var(--sans);
-    font-size:14px;font-weight:500;
-    padding:13px 24px;
-    border-radius:6px;
-    display:inline-flex;align-items:center;gap:8px;
-    transition:transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  .article-foot .sig{font-family:var(--serif);font-size:16px;color:var(--text-primary);}
+  .article-foot .sig span{display:block;font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-top:4px;}
+  .article-foot a.cta{
+    font-family:var(--mono);font-size:13px;color:var(--accent-light);
+    border:0.5px solid var(--accent-dim);border-radius:6px;padding:10px 16px;
+    transition:border-color 0.15s ease,background 0.15s ease;
   }
-  .btn-primary{background:var(--accent);color:#211106;}
-  .btn-primary:hover{background:var(--accent-light);transform:translateY(-1px);}
+  .article-foot a.cta:hover{border-color:var(--accent);background:var(--bg-1);}
 
   footer{
     border-top:0.5px solid var(--border);
-    padding:32px 0;
-    font-size:13px;
-    color:var(--text-muted);
-    text-align:center;
+    padding:32px 0;font-size:13px;color:var(--text-muted);text-align:center;
   }
-
   :focus-visible{outline:1.5px solid var(--accent);outline-offset:3px;}
 </style>
 </head>
@@ -166,32 +143,31 @@
 
 <header>
   <div class="wrap">
-    <span class="logo">Sarath Viswanath</span>
-    <a class="back-link" href="../index.html#blog">&larr; Back to site</a>
+    <a class="logo" href="../index.html">Sarath Viswanath</a>
+    <a class="back" href="../index.html#blog">&larr; All writing</a>
   </div>
 </header>
 
-<section class="article-head">
+<article>
   <div class="wrap">
-    <p class="eyebrow">Blog &middot; Quality Engineering</p>
+    <p class="eyebrow">Quality Engineering &middot; AI era</p>
     <h1>AI Quality Assurance: Why Software Testers Need a New Playbook for the AI Era</h1>
     <div class="article-meta">
+      <span class="author">Sarath Viswanath</span>
       <span>July 2026</span>
-      <span>9 min read</span>
-      <span>Sarath Viswanath</span>
+      <span>5 min read</span>
     </div>
-    <p class="article-lead">For decades, a test had one job: compare an actual output to an expected one. Pass or fail. Generative AI breaks that model — and QA hasn't caught up yet.</p>
-  </div>
-</section>
 
-<section class="article-body">
-  <div class="wrap">
+    <!-- ============ ARTICLE BODY ============ -->
+    <p class="lead">For decades, a test had one job: compare an actual output to an expected one. Pass or fail. Generative AI breaks that model, and QA hasn't caught up yet.</p>
 
-    <p>Every tester learns the same foundational move early on: define the expected result, run the system, compare actual against expected, mark pass or fail. It's worked for decades because traditional software is deterministic — given the same input, it produces the same output, every time.</p>
-    <p>AI systems don't play by that rule. Ask a large language model the same question twice and you can get two different, both reasonably correct, answers. There's no single "expected output" to assert against — there's a distribution of acceptable ones, and the line between "acceptable" and "wrong" is often a judgment call, not a boolean.</p>
-    <p>That single shift — from a fixed answer to a distribution of answers — is why AI Quality Assurance isn't a new tool bolted onto the old QA process. It's a different discipline that borrows the QA mindset and needs a mostly new toolkit.</p>
+    <p>Every tester learns the same foundational move early on: define the expected result, run the system, compare actual against expected, mark pass or fail. It's worked for decades because traditional software is deterministic. Given the same input, it produces the same output, every time.</p>
 
-    <div class="pull-quote">A recommendation engine or a GenAI feature can be <strong>technically functional and still wrong</strong>: hallucinated, inconsistent across runs, subtly biased, or unsafe.</div>
+    <p>AI systems don't play by that rule. Ask a large language model the same question twice and you can get two different, both reasonably correct, answers. There's no single "expected output" to assert against. There's a distribution of acceptable ones, and the line between "acceptable" and "wrong" is often a judgment call, not a boolean.</p>
+
+    <p>That single shift, from a fixed answer to a distribution of answers, is why AI Quality Assurance isn't a new tool bolted onto the old QA process. It's a different discipline that borrows the QA mindset and needs a mostly new toolkit.</p>
+
+    <blockquote>A recommendation engine or a GenAI feature can be technically functional and still wrong: hallucinated, inconsistent across runs, subtly biased, or unsafe.</blockquote>
 
     <h2>The failure modes traditional testing was never built for</h2>
     <p>Most QA defect taxonomies were built around functional bugs: broken buttons, wrong calculations, failed API calls. AI systems introduce failure categories that don't fit neatly into that model:</p>
@@ -205,12 +181,16 @@
 
     <h2>Test design has to change, not just test cases</h2>
     <p>The instinct is to keep writing test cases and just accept fuzzier pass criteria. That doesn't hold up. What replaces the old model is a different set of building blocks:</p>
+
     <h3>Evals instead of test cases</h3>
     <p>Where a test case says "input X should produce output Y," an eval says "input X should produce an output that scores above threshold Z on this rubric." The scoring itself becomes part of the test design work.</p>
+
     <h3>Golden datasets and reference answers</h3>
-    <p>Instead of one expected value, testers build a representative set of inputs with reference answers or acceptable-answer ranges — a dataset the system is evaluated against repeatedly as it changes.</p>
+    <p>Instead of one expected value, testers build a representative set of inputs with reference answers or acceptable-answer ranges: a dataset the system is evaluated against repeatedly as it changes.</p>
+
     <h3>Rubric-based scoring and LLM-as-judge</h3>
-    <p>Some outputs can be scored with a rubric a human defines; increasingly, another model is used to judge the first model's output against that rubric at scale — with a human periodically checking the judge itself.</p>
+    <p>Some outputs can be scored with a rubric a human defines; increasingly, another model is used to judge the first model's output against that rubric at scale, with a human periodically checking the judge itself.</p>
+
     <h3>Regression testing without identical outputs</h3>
     <p>When outputs are never byte-identical between runs, regression testing shifts from string comparison to statistical comparison: is quality holding steady across a batch, not did this one output match exactly.</p>
 
@@ -225,37 +205,38 @@
     </ul>
 
     <h2>Security is now part of QA's job, too</h2>
-    <p>This is the part that's easiest to underweight, because security testing has traditionally sat with a separate specialist team. With AI systems, the model itself becomes part of the attack surface — and some of that risk surfaces during ordinary functional testing, before a security team ever gets involved.</p>
+    <p>This is the part that's easiest to underweight, because security testing has traditionally sat with a separate specialist team. With AI systems, the model itself becomes part of the attack surface, and some of that risk surfaces during ordinary functional testing, before a security team ever gets involved.</p>
     <p>Testers don't need to become red-teamers. But they do need enough awareness to recognize and escalate:</p>
     <ul>
       <li><strong>Prompt injection</strong> — inputs, including ones hidden in retrieved documents or tool outputs, that hijack the system's instructions.</li>
       <li><strong>Data and PII leakage</strong> — outputs that expose training data, other users' data, or system prompts they shouldn't.</li>
       <li><strong>Model extraction and adversarial inputs</strong> — attempts to reverse-engineer the model or push it into degraded, exploitable behavior.</li>
     </ul>
-    <p>A useful anchor here is the OWASP LLM Top 10 — not as something testers need to master, but as a checklist for what to keep an eye out for and who to loop in when something looks off.</p>
+    <p>A useful anchor here is the OWASP LLM Top 10, not as something testers need to master, but as a checklist for what to keep an eye out for and who to loop in when something looks off.</p>
 
     <h2>Quality doesn't stop at release</h2>
-    <p>Because AI systems drift — the same code producing different behavior as models and data evolve — quality assurance has to extend into production. That means drift detection, continuous evaluation against the golden dataset, feedback loops from real usage, and an incident response plan for when a live system starts misbehaving in ways a pre-release test pass didn't catch.</p>
-
-    <div class="divider"></div>
+    <p>Because AI systems drift, the same code producing different behavior as models and data evolve, quality assurance has to extend into production. That means drift detection, continuous evaluation against the golden dataset, feedback loops from real usage, and an incident response plan for when a live system starts misbehaving in ways a pre-release test pass didn't catch.</p>
 
     <h2>What this means for your career</h2>
-    <p>None of this requires starting over. The core QA instinct — systematic, skeptical, evidence-based thinking about what could go wrong — is exactly what AI QA needs. What changes is the toolkit: evals instead of assertions, rubrics instead of fixed expectations, drift monitoring instead of a one-time release gate, and enough security literacy to know what to flag.</p>
-    <p>Testers who build this skill set now aren't just staying relevant — they're positioning themselves for one of the more interesting problems in software right now: how do you guarantee quality for a system that doesn't behave the same way twice?</p>
+    <p>None of this requires starting over. The core QA instinct, systematic, skeptical, evidence-based thinking about what could go wrong, is exactly what AI QA needs. What changes is the toolkit: evals instead of assertions, rubrics instead of fixed expectations, drift monitoring instead of a one-time release gate, and enough security literacy to know what to flag.</p>
+    <p>Testers who build this skill set now aren't just staying relevant. They're positioning themselves for one of the more interesting problems in software right now: how do you guarantee quality for a system that doesn't behave the same way twice?</p>
 
-    <div class="callout">
-      <h3>Go deeper: the full AI QA curriculum</h3>
-      <p>I've put together a complete, structured curriculum covering everything in this article in depth — test design, the five quality dimensions, security awareness, production monitoring, and a hands-on capstone project — built specifically to help software testers make this transition.</p>
-      <a class="btn btn-primary" href="../index.html#contact">Get in touch about it &rarr;</a>
+    <h2>Go deeper: the full AI QA curriculum</h2>
+    <p>I've put together a complete, structured curriculum covering everything in this article in depth: test design, the five quality dimensions, security awareness, production monitoring, and a hands-on capstone project, built specifically to help software testers make the shift into AI quality engineering. More on that soon.</p>
+
+    <!-- ============ FOOTER ============ -->
+    <div class="article-foot">
+      <div class="sig">
+        Sarath Viswanath
+        <span>Quality Engineering, AI era</span>
+      </div>
+      <a class="cta" href="../index.html#contact">Get in touch &rarr;</a>
     </div>
-
   </div>
-</section>
-
-<div class="signal"><svg viewBox="0 0 960 48" preserveAspectRatio="none"><path d="M0 24 L120 24 L140 6 L160 42 L180 24 L300 24 L320 12 L340 36 L360 24 L520 24 L540 4 L560 44 L580 24 L720 24 L740 14 L760 34 L780 24 L960 24" fill="none" stroke="#D9713C" stroke-width="1.2"/></svg></div>
+</article>
 
 <footer>
-  &copy; 2026 Sarath Viswanath. Built with intent, not a template.
+  &copy; 2026 Sarath Viswanath.
 </footer>
 
 </body>
